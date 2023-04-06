@@ -1,0 +1,56 @@
+.rootTaskItem {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftItem,
+.rightItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40%;
+}
+
+.detailItem {
+  padding: 20px;
+}
+
+.checkboxItem {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.titleItem {
+  font-size: 18px;
+}
+
+.btn {
+  height: 30px;
+  border-radius: 3px;
+  width: 40%;
+  color: #ffff;
+  cursor: pointer;
+  border: none;
+}
+
+.buttonDetail {
+  margin-right: 10%;
+  background-color: #00c0cf;
+}
+
+.buttonRemove {
+  background-color: #d45849;
+}
