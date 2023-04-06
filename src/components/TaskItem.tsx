@@ -8,10 +8,11 @@ interface TaskItemProps {
   removeTask: (id: number) => void;
   updateTask: (newItem: TaskItemType) => void;
   checkedItem: (id: number) => void;
+  checked: boolean;
 }
 
 const TaskItem = (props: TaskItemProps) => {
-  const { item, removeTask, updateTask, checkedItem } = props;
+  const { item, removeTask, updateTask, checkedItem, checked } = props;
   const [openDetail, setOpenDetail] = useState(false);
 
   const handleShowDetail = () => {
@@ -27,6 +28,7 @@ const TaskItem = (props: TaskItemProps) => {
   const handleUpdateTask = (item: TaskItemType) => {
     if (item?.id) {
       updateTask(item);
+      handleShowDetail();
     }
   };
 
@@ -44,6 +46,7 @@ const TaskItem = (props: TaskItemProps) => {
             type="checkbox"
             className={styles.checkboxItem}
             onChange={() => handleCheckTask(item.id)}
+            checked={checked}
           />
           <p className={styles.titleItem}>{item.title}</p>
         </div>

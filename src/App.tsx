@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import TaskForm from './components/TaskForm';
 import TaskItem from './components/TaskItem';
 import { getValueStorage, setValueStorage } from './utils/localStorage';
+import styles from './App.module.css';
 
 export interface TaskItemType {
   title: string;
@@ -81,25 +81,25 @@ function App() {
   };
 
   return (
-    <div className="rootPage">
-      <div className="contentPage">
-        <div className="newTask">
-          <div className="headerForm">
+    <div className={styles.rootPage}>
+      <div className={styles.contentPage}>
+        <div className={styles.newTask}>
+          <div className={styles.headerForm}>
             <b style={{ fontSize: 26 }}>New Task</b>
           </div>
           <TaskForm submit={addTask} type="Add" />
         </div>
-        <div className="taskList">
-          <div className="headerForm">
+        <div className={styles.taskList}>
+          <div className={styles.headerForm}>
             <b style={{ fontSize: 26 }}>To Do List</b>
           </div>
           <input
-            className="inputSearch"
+            className={styles.inputSearch}
             type="text"
             onChange={(e) => handleSearchTask(e.target.value)}
             placeholder="Search ..."
           />
-          <div className="taskListItem">
+          <div className={styles.taskListItem}>
             {taskListShow.length > 0 &&
               sortListShow(taskListShow).map((item) => (
                 <TaskItem
@@ -108,18 +108,21 @@ function App() {
                   removeTask={removeTask}
                   updateTask={updateTask}
                   checkedItem={checkedItem}
+                  checked={checkedList.includes(item.id || -1)}
                 />
               ))}
           </div>
           {checkedList.length > 0 && (
-            <div className="rootAction">
-              <div className="bulkAction">
-                <div className="leftAction">
+            <div className={styles.rootAction}>
+              <div className={styles.bulkAction}>
+                <div className={styles.leftAction}>
                   <p>Bulk Action: </p>
                 </div>
-                <div className="rightAction">
-                  <button className="btnAction buttonDone">Done</button>
-                  <button className="btnAction buttonRemoveAction" onClick={removeListTask}>
+                <div className={styles.rightAction}>
+                  <button className={`${styles.btnAction} ${styles.buttonDone}`}>Done</button>
+                  <button
+                    className={`${styles.btnAction} ${styles.buttonRemoveAction}`}
+                    onClick={removeListTask}>
                     Remove
                   </button>
                 </div>
